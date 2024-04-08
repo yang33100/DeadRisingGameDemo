@@ -1,0 +1,6 @@
+[
+{"id":1,"res":"Zombie/Zombie1","atk":5,"moveSpeed":5,"roundSpeed":100,"hp":100,"atkOffset":0.8},
+{"id":2,"res":"Zombie/Zombie2","atk":5,"moveSpeed":5,"roundSpeed":100,"hp":100,"atkOffset":1.2},
+{"id":3,"res":"Zombie/Zombie3","atk":5,"moveSpeed":2,"roundSpeed":100,"hp":100,"atkOffset":1},
+{"id":4,"res":"Zombie/Zombie4","atk":5,"moveSpeed":3,"roundSpeed":100,"hp":100,"atkOffset":0.5}
+]

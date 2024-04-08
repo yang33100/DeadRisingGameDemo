@@ -11,11 +11,13 @@ public class DataManager
     public List<RoleInfo> roleInfoList;
     public PlayerData playerData;
     public RoleInfo selectedRole;
+    public List<MonsterInfo> monsterInfoList; 
     private DataManager() 
     {
         musicData = JsonMgr.Instance.LoadData<MusicData>("MusicData");
         roleInfoList = JsonMgr.Instance.LoadData<List<RoleInfo>>("RoleInfo");
         playerData = JsonMgr.Instance.LoadData<PlayerData>("PlayerData");
+        monsterInfoList = JsonMgr.Instance.LoadData<List<MonsterInfo>>("MonsterInfo");
     }
 
     
