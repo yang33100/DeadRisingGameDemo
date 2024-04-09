@@ -13,6 +13,8 @@ public class MonsterPoint : MonoBehaviour
 
     private void Start()
     {
+        GameLevelMgr.Instance.ChangeMonsterCnt(troopCnt * zombieCntATtoop);
+        UIManager.Instance.GetPanel<GamePanel>().UpdateCnt(troopCnt);
         Invoke("CreateTroop", firstTroopDelayTime);
     }
 
@@ -20,14 +22,11 @@ public class MonsterPoint : MonoBehaviour
     {
         if (troopCnt <= 0)
         {
-            //Ê¤Àû
             return;
         }
         nowId = monsterIDList[Random.Range(0, monsterIDList.Count)];
-        CreateMonster();
         uncreateZombieCnt = zombieCntATtoop;
-        troopCnt--;
-        
+        CreateMonster();
     }
 
     private void CreateMonster()
@@ -41,11 +40,11 @@ public class MonsterPoint : MonoBehaviour
         if (uncreateZombieCnt > 0)
             Invoke("CreateMonster", createTimeOffset);
         else
+        {
+            troopCnt--;
+            UIManager.Instance.GetPanel<GamePanel>().UpdateCnt(troopCnt);
             Invoke("CreateTroop", troopTimeOffset);
+        }
     }
 
-    public bool CheckOver()
-    {
-        return troopCnt == 0 && uncreateZombieCnt == 0;
-    }
 }

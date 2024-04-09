@@ -30,7 +30,7 @@ public class ShieldObject : MonoBehaviour
         {
             hp = 0;
             isDead = true;
-            //todo:”Œœ∑Ω· ¯
+            GameLevelMgr.Instance.GameOver();
         }
         UpdateHp(hp, maxHp);
     }

@@ -47,6 +47,7 @@ public class MonsterObject : MonoBehaviour
     }
     public void AtkEvent()
     {
+        DataManager.Instance.PlaySound("Music/Eat");
         Collider[] colliders = Physics.OverlapSphere(transform.position + transform.forward + transform.up, 1, 1 << LayerMask.NameToLayer("Shield"));
         foreach (Collider collider in colliders)
         {
@@ -66,14 +67,20 @@ public class MonsterObject : MonoBehaviour
             Dead();
         }
         animator.SetTrigger("Wound");
+        DataManager.Instance.PlaySound("Music/Wound");
     }
 
     public void Dead()
     {
         isDead = true;
         agent.isStopped = true;
+        DataManager.Instance.PlaySound("Music/Dead");
         animator.SetBool("Dead", true);
+    }
 
-        Destroy(this, 5);
+    public void DeadEvent()
+    {
+        GameLevelMgr.Instance.ChangeMonsterCnt(-1);
+        Destroy(gameObject);
     }
 }

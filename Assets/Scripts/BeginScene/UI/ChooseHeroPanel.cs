@@ -26,8 +26,12 @@ public class ChooseHeroPanel : BasePanel
             DataManager.Instance.selectedRole = nowRoleInfo;
             UIManager.Instance.HidePanel<ChooseHeroPanel>();
             //进入游戏场景
-            SceneManager.LoadScene("GameScene 1");
-            UIManager.Instance.ShowPanel<GamePanel>();
+            AsyncOperation ao = SceneManager.LoadSceneAsync("GameScene 1");
+            ao.completed += (obj) =>
+            {
+                GameLevelMgr.Instance.Init();
+            };
+            
         });
 
         buttonBuy.onClick.AddListener(() =>
@@ -78,7 +82,7 @@ public class ChooseHeroPanel : BasePanel
             heroObj = null;
         }
         heroObj = Instantiate(Resources.Load<GameObject>(nowRoleInfo.res), heroPos.position, heroPos.rotation);
-
+        Destroy(heroObj.GetComponent<PlayerObject>());
     }
 
     private void UpdateUnlockButton()

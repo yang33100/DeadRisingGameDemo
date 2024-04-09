@@ -1,5 +1,5 @@
 [
 {"id":1,"res":"Role/Assualt_Soldier","atk":34,"name":"突击兵","unlockMoney":0,"atkType":1,"hitEff":"Eff/1"},
 {"id":2,"res":"Role/Heavy_Soldier","atk":20,"name":"支援兵","unlockMoney":500,"atkType":1,"hitEff":"Eff/1"},
-{"id":3,"res":"Role/Knife_Soldier","atk":50,"name":"近战勇者","unlockMoney":1000,"atkType":2,"hitEff":"Eff/1"}
+{"id":3,"res":"Role/Knife_Soldier","atk":50,"name":"近战勇者","unlockMoney":1000,"atkType":2,"hitEff":"Eff/2"}
 ]

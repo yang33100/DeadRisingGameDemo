@@ -12,12 +12,14 @@ public class DataManager
     public PlayerData playerData;
     public RoleInfo selectedRole;
     public List<MonsterInfo> monsterInfoList; 
+    public List<TowerInfo> towerInfoList;
     private DataManager() 
     {
         musicData = JsonMgr.Instance.LoadData<MusicData>("MusicData");
         roleInfoList = JsonMgr.Instance.LoadData<List<RoleInfo>>("RoleInfo");
         playerData = JsonMgr.Instance.LoadData<PlayerData>("PlayerData");
         monsterInfoList = JsonMgr.Instance.LoadData<List<MonsterInfo>>("MonsterInfo");
+        towerInfoList = JsonMgr.Instance.LoadData<List<TowerInfo>>("TowerInfo");
     }
 
     
@@ -28,5 +30,17 @@ public class DataManager
     public void SaveMusicData()
     {
         JsonMgr.Instance.SaveData(musicData, "MusicData");
+    }
+
+    public void PlaySound(string resName)
+    {
+        GameObject musicObj = new GameObject();
+        AudioSource a = musicObj.AddComponent<AudioSource>();
+        a.clip = Resources.Load<AudioClip>(resName);
+        a.volume = musicData.soundVal;
+        a.mute = !musicData.soundOpen;
+        a.Play();
+
+        GameObject.Destroy(musicObj, 1);
     }
 }

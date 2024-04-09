@@ -37,7 +37,7 @@ public abstract class BasePanel : MonoBehaviour
         isShow = false;
         hideCallback = callBack;
     }
-    void Update()
+    protected virtual void Update()
     {
         if( isShow && canvasGroup.alpha != 1)
         {
